@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>json</h1>
+    <h5>javascript object notation.</h5>
+    <ul id="post-container">
+
+    </ul>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json())
+        .then(json =>  display(json))
+        function display(posts){
+         const postTitle = posts.map(posts => posts.title);
+         postTitle.map(postTitle =>{
+             const li = document.createElement("li");
+             li.innerText = postTitle;
+             const ul = document.getElementById("post-container");
+             const list = ul.appendChild(li);
+             return list;
+         })   
+        }
+
+    </script>
+</body>
+</html>

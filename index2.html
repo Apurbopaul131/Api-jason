@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON</h1>
+    <h5>javascript object notation.</h5>
+    <!-- <ul id="user-container"> -->
+        <input type="text" placeholder=" Enter title name" id="title">
+        <br>
+        <input type="text" placeholder="Enter body content" id="body-content">
+        <br>
+        <button id="submit">submit</button>
+        <!-- </ul> -->
+    <script>
+        document.getElementById("submit").addEventListener("click",function(){
+            const Title = document.getElementById("title").value;
+            const bodyContent = document.getElementById("body-content").value;
+            const postInfo = {
+                title:Title,
+                body:bodyContent,
+                userId:101,
+                name:"Apurbo paul",
+            };
+            postToServer(postInfo);
+            
+        })
+
+    
+        function postToServer(postInfo){
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(postInfo),
+            headers: {
+           'Content-type': 'application/json; charset=UTF-8',
+           },
+           })
+           .then((response) => response.json())
+           .then((json) => console.log(json));
+           }
+
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        // .then(response => response.json())
+        //  .then(json => display(json))
+        //  .catch(error => console.log(error))
+
+        //  function display(user){
+        //      let array = [];
+        //      for(let i = 0;i < user.length ;i++){
+        //          const userNames = user[i].username;
+        //         array.push(userNames);
+             
+        //      }
+        //      for(let j = 0;j<array.length;j++){
+        //          const userName = array[j];
+        //          const li = document.createElement("li");
+        //          li.innerText = userName;
+        //          const ul = document.getElementById("user-container");
+        //          ul.appendChild(li);
+        //      }
+        //  }
+         
+          
+     
+    </script>
+</body>
+</html>
